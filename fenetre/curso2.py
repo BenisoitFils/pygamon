@@ -1,0 +1,33 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
+ventana = tk.Tk()
+ventana.geometry('600x400')
+ventana.title('manejo de grid')
+
+entrada1 = ttk.Entry(ventana, width=30)
+entrada1.grid(row=0, column=0)
+
+# etiqueta (label)
+etiqueta1 = tk.Label(ventana, text='aqui se mostrara el contenido de la caja de texto')
+etiqueta1.grid(row=1, column=0, columnspan=2)
+
+
+
+# metodo pour extraire info de input
+def enviar():
+    # Modificar el texto del label
+    etiqueta1.config(text=entrada1.get())
+    # Messagebox (caja mensajes)
+    mensaje1 = entrada1.get()
+    if mensaje1:
+        messagebox.showinfo('Mensaje Informativo', mensaje1 + 'Informativo')
+        messagebox.showerror('Mensaje Error', mensaje1 + 'Error')
+        messagebox.showwarning('Mensaje Alerta', mensaje1 + 'Alerta')
+
+
+# creamos un buton
+boton1 = ttk.Button(ventana, text='Enviar', command=enviar)
+boton1.grid(row=0, column=1)
+
+
+ventana.mainloop()

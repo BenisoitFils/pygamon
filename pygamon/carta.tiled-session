@@ -1,0 +1,75 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "house.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "carta.tmx": {
+            "scale": 1.1474218749999998,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 480.2069857697284,
+                "y": 320.71900320010894
+            }
+        },
+        "carte.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 0.75,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 537.3333333333334,
+                "y": 621.3333333333334
+            }
+        },
+        "house.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 1.636375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 72.72171721029716,
+                "y": 160.1099992361164
+            }
+        },
+        "house.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "nature.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "D:/curso_python/pygamon",
+    "map.height": 25,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 25,
+    "openFiles": [
+        "nature.tsx",
+        "house.tsx",
+        "house.tmx"
+    ],
+    "project": "",
+    "recentFiles": [
+        "nature.tsx",
+        "house.tsx",
+        "house.tmx",
+        "carte.tmx",
+        "carta.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    },
+    "tileset.transparentColor": "#000000",
+    "tileset.useTransparentColor": true
+}
