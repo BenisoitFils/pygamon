@@ -6,42 +6,58 @@ from pygamon.player import Player
 
 class Game:
     def __init__(self):
-        # Crear la ventana
+        # creer la fenetre
         self.screen = pygame.display.set_mode((800, 600))
         pygame.display.set_caption("Pygamon-Aventure")
 
-        # Generar un jugador
+        #generer un joueur
         self.player = Player(0, 0)
         self.map_manager = MapManager(self.screen, self.player)
-
-        self.pressed_old = "DOWN"
 
     def handle_input(self):
         pressed = pygame.key.get_pressed()
         if pressed[pygame.K_UP]:
             self.player.move_up()
             self.player.change_animation('up')
-            self.pressed_old = 'UP'        
         elif pressed[pygame.K_DOWN]:
             self.player.move_down()
-            self.player.change_animation('down')
-            self.pressed_old = 'DOWN' 
+            self.player.change_animation('down1')
         elif pressed[pygame.K_LEFT]:
             self.player.move_left()
             self.player.change_animation('left')
-            self.pressed_old = 'LEFT' 
         elif pressed[pygame.K_RIGHT]:
             self.player.move_right()
             self.player.change_animation('right')
-            self.pressed_old = 'RIGHT' 
-        else:
-            self.player.change_animation_stop('stop',self.pressed_old)
+
+
+
+
 
     def update(self):
         self.map_manager.update()
 
+
+
+
+
+
+
+        """if self.player == 'world' and self.player.feet.colliderect(self.enter_house_rect):
+            self.switch_house()
+            self.map = 'house'
+
+
+        if self.player == 'house' and self.player.feet.colliderect(self.enter_house_rect):
+            self.switch_world()
+            self.map = 'world'"""
+
+
+
+
+
+
     def run(self):
-        # Bucle principal
+        # boucle
         clock = pygame.time.Clock()
         running = True
         while running:
