@@ -1,40 +1,41 @@
 import pygame
+import os
 
 class Player(pygame.sprite.Sprite):
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, scale=(85, 125)):
         super().__init__()
-        self.sprite_sheet = pygame.image.load('player.png')
-        self.scale = (30, 57)  # Definir el tamaño deseado para las imágenes escaladas
-        self.image = self.get_image(115, 0)
-        self.image.set_colorkey([0, 0, 0])
-        self.rect = self.image.get_rect()
-        self.position = [x, y]
-
-        self.images = { 
+        self.scale = scale  # Tamaño deseado para las imágenes escaladas
+        
+        # Cargar las imágenes individuales usando get_image
+        self.images = {
             'down': {
-                0: self.get_image(0, 0),
-                1: self.get_image(250, 0)
+                0: self.get_image('img/down_0.png'),
+                1: self.get_image('img/down_1.png')
             },
             'up': {
-                0: self.get_image(0, 362),
-                1: self.get_image(242, 362)
+                0: self.get_image('img/up_0.png'),
+                1: self.get_image('img/up_1.png')
             },
             'left': {
-                0: self.get_image(0, 115),
-                1: self.get_image(242, 115)
+                0: self.get_image('img/left_0.png'),
+                1: self.get_image('img/left_1.png')
             },
             'right': {
-                0: self.get_image(0,235),
-                1: self.get_image(242, 235)
+                0: self.get_image('img/right_0.png'),
+                1: self.get_image('img/right_1.png')
             },
             'stop': {
-                'DOWN': self.get_image(115, 0),
-                'UP': self.get_image(115, 362),
-                'LEFT': self.get_image(115, 115),
-                'RIGHT': self.get_image(115, 235)
+                'DOWN': self.get_image('img/stop_down.png'),
+                'UP': self.get_image('img/stop_up.png'),
+                'LEFT': self.get_image('img/stop_left.png'),
+                'RIGHT': self.get_image('img/stop_right.png')
             }
         }
+
+        self.image = self.images['stop']['DOWN']
+        self.rect = self.image.get_rect()
+        self.position = [x, y]
 
         self.feet = pygame.Rect(0, 0, self.rect.width * 0.5, 12)
         self.old_position = self.position.copy()
@@ -42,6 +43,11 @@ class Player(pygame.sprite.Sprite):
         self.speed = 2
         self.animation_time = 0
         self.animation_speed = 200 
+
+    def get_image(self, filepath):
+        image = pygame.image.load(filepath).convert_alpha()
+        image = pygame.transform.scale(image, self.scale)  # Redimensionar la imagen
+        return image
 
     def save_location(self):
         self.old_position = self.position.copy()
@@ -52,11 +58,9 @@ class Player(pygame.sprite.Sprite):
             self.animation_time = now
             self.images_pactual = (self.images_pactual + 1) % len(self.images[name])
             self.image = self.images[name][self.images_pactual]
-            self.image.set_colorkey((0, 0, 0))
-    
+
     def change_animation_stop(self, name, position):
         self.image = self.images[name][position]
-        self.image.set_colorkey((0, 0, 0))
 
     def move_right(self): self.position[0] += self.speed
 
@@ -75,8 +79,3 @@ class Player(pygame.sprite.Sprite):
         self.rect.topleft = self.position
         self.feet.midbottom = self.rect.midbottom
 
-    def get_image(self, x, y):
-        image = pygame.Surface([45, 85])
-        image.blit(self.sprite_sheet, (0, 0), (x, y, 45, 85))
-        image = pygame.transform.scale(image, self.scale)  # Escalar la imagen
-        return image
